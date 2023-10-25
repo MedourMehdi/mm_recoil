@@ -14,18 +14,20 @@ SRC := $(wildcard $(SRC_DIR)/*.cpp) \
   $(wildcard $(SRC_DIR)/*/zview/*.cpp) \
   $(wildcard $(SRC_DIR)/*/dither/*.cpp) \
 
-# BIN := $(BIN_DIR)/mm_recoil68k.prg
-BIN := $(BIN_DIR)/mm_recoil.prg
+# BIN := $(BIN_DIR)/mm_recoil.prg
+# _CFLAGS   := -m68020-60 -fomit-frame-pointer -fno-strict-aliasing -O2 
+
+BIN := $(BIN_DIR)/mm_recoil68k.prg
+_CFLAGS   := -m68000 -fomit-frame-pointer -fno-strict-aliasing -O2
+
 # BIN := $(BIN_DIR)/mm_recoilCF.prg
+# _CFLAGS   := -mcfv4e -fomit-frame-pointer -fno-strict-aliasing -O2 
 
 OBJ := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 OBJ_C := $(SRC_C:$(SRC_DIR)/%.c=$(OBJ_DIR_C)/%.o)
 
 _CPPFLAGS := -I./
 
-_CFLAGS   := -m68020-60 -fomit-frame-pointer -fno-strict-aliasing -O2 
-# _CFLAGS   := -mcfv4e -fomit-frame-pointer -fno-strict-aliasing -O2 
-# _CFLAGS   := -m68000 -fomit-frame-pointer -fno-strict-aliasing -O2
 _LDFLAGS  :=
 
 _LDLIBS   := -lgem -lpng -lz -lm -lyuv $(LIB_FREETYPE) -lpthread

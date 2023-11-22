@@ -91,6 +91,7 @@ void _st_Read_Recoil(int16_t this_win_handle, boolean file_process){
         this_win->total_length_w = this_win->wi_original_mfdb.fd_w;
         this_win->total_length_h = this_win->wi_original_mfdb.fd_h;     
         this_win->wi_data->stop_original_data_load = TRUE;
-        this_win->wi_data->wi_buffer_modified = FALSE;			
+        this_win->wi_data->wi_buffer_modified = FALSE;
+        RECOIL_Delete(recoil);	
 	}
 }
